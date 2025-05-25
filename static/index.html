@@ -51,8 +51,8 @@
   <script>
   async function fetchData() {
     try {
-      const res = await fetch("/data");
-      const data = await res.json();
+      const datares = await fetch("/api/data");
+      const data = await datares.json();
       document.getElementById("lt").innerText = data.lt;
       document.getElementById("rt").innerText = data.rt;
       document.getElementById("ld").innerText = data.ld;
