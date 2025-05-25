@@ -49,31 +49,25 @@
   </div>
 
   <script>
-  async function fetchData() {
-    try {
-      const datares = await fetch("/api/data");
-      const data = await datares.json();
-      document.getElementById("lt").innerText = data.lt;
-      document.getElementById("rt").innerText = data.rt;
-      document.getElementById("ld").innerText = data.ld;
-      document.getElementById("rd").innerText = data.rd;
-      document.getElementById("deltaV").innerText = data.dvert;
-      document.getElementById("deltaH").innerText = data.dhoriz;
-      document.getElementById("servoV").innerText = data.servovert;
-      document.getElementById("servoH").innerText = data.servohori;
-    } catch (err) {
-      console.error("Error fetching data:", err);
-    }
+async function fetchData() {
+  try {
+    const response = await fetch('/data');
+    const data = await response.json();
+
+    document.getElementById("lt").innerText = data.lt;
+    document.getElementById("rt").innerText = data.rt;
+    document.getElementById("ld").innerText = data.ld;
+    document.getElementById("rd").innerText = data.rd;
+    document.getElementById("deltaV").innerText = data.dvert;
+    document.getElementById("deltaH").innerText = data.dhoriz;
+    document.getElementById("servoV").innerText = data.servovert;
+    document.getElementById("servoH").innerText = data.servohori;
+  } catch (err) {
+    console.error("Error fetching data:", err);
   }
-
-function refreshAll() {
-loadData();
 }
-
-refreshAll();
-
-  setInterval(fetchData, 3000); // every 3 seconds
-  fetchData(); // run once at start
+setInterval(fetchData, 3000);
+fetchData();
 </script>
 </body>
 </html>
