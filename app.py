@@ -28,4 +28,6 @@ def update_data():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # ✅ Required for Render deployment
+    port = int(os.environ.get("PORT", 5000))  # Use Render-assigned port or fallback to 5000
+    app.run(host="0.0.0.0", port=port)        # ✅ Bind to 0.0.0.0 for external access
